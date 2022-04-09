@@ -1,0 +1,51 @@
+{
+  "name": "webpack-typescript-less-boilerplate",
+  "version": "1.0.0",
+  "description": "webpack-typescript-less-boilerplate",
+  "main": "src/index.js",
+  "repository": "https://github.com/tjnk24/WebpackTypescriptBoilerplate.git",
+  "author": "tjnk24 <tjnk24@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "start": "cross-env NODE_ENV=development && webpack serve",
+    "build": "rm -rf build && mkdir build && cross-env NODE_ENV=production webpack",
+    "lint": "eslint ./src/**/*.ts && stylelint ./src/**/*.less",
+    "lint-fix": "eslint ./src/**/*.ts --fix & stylelint ./src/**/*.less --fix"
+  },
+  "dependencies": {
+    "antd": "4.19.5",
+    "react": "18.0.0"
+  },
+  "devDependencies": {
+    "@types/postcss-preset-env": "6.7.3",
+    "@typescript-eslint/eslint-plugin": "5.17.0",
+    "@typescript-eslint/parser": "5.17.0",
+    "autoprefixer": "10.4.4",
+    "clean-webpack-plugin": "4.0.0",
+    "copy-webpack-plugin": "10.2.4",
+    "cross-env": "7.0.3",
+    "css-loader": "6.7.1",
+    "css-minimizer-webpack-plugin": "3.4.1",
+    "cssnano": "5.1.7",
+    "eslint": "8.12.0",
+    "eslint-plugin-eslint-plugin": "4.1.0",
+    "eslint-plugin-import": "2.25.4",
+    "file-loader": "6.2.0",
+    "html-webpack-plugin": "5.5.0",
+    "less-loader": "10.2.0",
+    "mini-css-extract-plugin": "2.6.0",
+    "postcss": "8.4.12",
+    "postcss-less": "6.0.0",
+    "postcss-loader": "6.2.1",
+    "postcss-preset-env": "7.4.3",
+    "style-loader": "3.3.1",
+    "stylelint": "14.6.1",
+    "stylelint-config-standard": "25.0.0",
+    "ts-loader": "9.2.8",
+    "typescript": "4.6.3",
+    "webpack": "5.71.0",
+    "webpack-cli": "4.9.2",
+    "webpack-dev-server": "4.7.4"
+  }
+}

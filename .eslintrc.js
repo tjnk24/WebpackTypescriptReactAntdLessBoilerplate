@@ -3,6 +3,9 @@ module.exports = {
     'eslint-plugin',
     '@typescript-eslint',
     'import',
+    'eslint-comments',
+    'react',
+    'react-hooks',
   ],
   env: {
     es6: true,
@@ -15,13 +18,25 @@ module.exports = {
     warnOnUnsupportedTypeScriptVersion: false,
     project: './tsconfig.json',
   },
+  settings: {
+    'import/parsers': {
+        '@typescript-eslint/parser': ['.ts', '.tsx'],
+    },
+    react: {
+        version: 'detect',
+    },
+  },
   extends: [
     'eslint:recommended',
+    'plugin:react/recommended',
     'plugin:@typescript-eslint/eslint-recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:@typescript-eslint/recommended-requiring-type-checking',
+    'plugin:jsx-a11y/recommended',
+    'react-app',
 ],
   rules: {
+    // Code Style
     'arrow-parens': ['error', 'as-needed'],
     camelcase: 0,
     'class-methods-use-this': 0,
@@ -97,17 +112,6 @@ module.exports = {
         },
     ],
     'no-multi-spaces': 'error',
-    'no-restricted-imports': [
-        'error',
-        {
-            'patterns': [
-                {
-                    'group': ['__pages/*'],
-                    'message': 'usage of import from __pages directory allowed only for appRoutes.ts, render.ts, static/client/index.tsx'
-                },
-            ]
-        }
-    ],
     'object-curly-newline': [
         'error',
         {
@@ -125,7 +129,6 @@ module.exports = {
     '@typescript-eslint/no-unnecessary-type-assertion': 0,
     '@typescript-eslint/no-explicit-any': 0,
     '@typescript-eslint/explicit-function-return-type': 0,
-
     '@typescript-eslint/no-var-requires': 0,
     '@typescript-eslint/no-misused-promises': 0,
     '@typescript-eslint/no-this-alias': 0,
@@ -156,6 +159,92 @@ module.exports = {
                 "requireLast": false
             }
         }
+    ],
+
+    // React
+    'react/jsx-no-useless-fragment': 2,
+    'react/jsx-wrap-multilines': 'error',
+    'react/jsx-no-bind': 0,
+    'react/jsx-uses-react': 'error',
+    'react/jsx-uses-vars': 'error',
+    'react/display-name': 0,
+    'react/prop-types': 0,
+    'react/no-children-prop': 0,
+    'react/jsx-curly-spacing': [
+        'error',
+        {
+            when: 'never',
+        },
+    ],
+    'react/jsx-tag-spacing': [
+        'warn',
+        {
+            closingSlash: 'never',
+            beforeSelfClosing: 'never',
+            afterOpening: 'never',
+            beforeClosing: 'never',
+        },
+    ],
+    'react/jsx-newline': [
+        'error',
+        {
+            prevent: false,
+        },
+    ],
+    'react/jsx-max-props-per-line': [
+        'error',
+        {
+            maximum: 2,
+        },
+    ],
+    'react/jsx-curly-brace-presence': 'error',
+    'import/no-anonymous-default-export': 0,
+
+    // React Hooks
+    'react-hooks/rules-of-hooks': 2,
+    'react-hooks/exhaustive-deps': 2,
+
+    //imports
+    'import/order': [
+        'warn',
+        {
+            groups: [
+                ['builtin', 'external'],
+                'internal',
+                ['parent', 'sibling'],
+                'index',
+            ],
+            pathGroups: [
+                {
+                    pattern: '*__*',
+                    group: 'internal',
+                },
+                {
+                    pattern: '*__*/**',
+                    group: 'internal',
+                },
+                {
+                    pattern: '*__components/**',
+                    group: 'internal',
+                    position: 'before',
+                },
+                {
+                    pattern: '*__pages/**',
+                    group: 'internal',
+                    position: 'before',
+                },
+                {
+                    pattern: './*.{less,css}',
+                    group: 'index',
+                },
+            ],
+            pathGroupsExcludedImportTypes: ['internal'],
+            alphabetize: {
+                order: 'asc',
+                caseInsensitive: true,
+            },
+            'newlines-between': 'always',
+        },
     ],
   },
 };

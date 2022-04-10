@@ -10,36 +10,41 @@ const development = process.env.NODE_ENV !== 'production';
 
 module.exports = {
     mode: development ? 'development' : 'production',
-    entry: './src/index.ts',
+    entry: './src/index.tsx',
     output: {
         filename: '[name].bundle.js',
         chunkFilename: '[name].chunk.js',
         path: path.resolve(__dirname, 'build'),
         clean: true,
     },
+    devtool: development && 'source-map',
     devServer: {
         port: 8080,
         static: path.resolve(__dirname, 'src'),
-        open: true,
         devMiddleware: {
             writeToDisk: true,
         },
     },
     resolve: {
         extensions: ['.js', '.ts', '.tsx'],
+        alias: {
+            '__components': path.resolve(__dirname, 'src', 'components'),
+            '__pages': path.resolve(__dirname, 'src', 'pages'),
+        },
     },
     module: {
         rules: [
             {
-                test: /\.ts$/,
+                test: /\.(tsx|ts)$/,
                 exclude: /node_modules/,
                 use: [
-                    {loader: 'ts-loader'},
+                    'ts-loader',
                 ],
             },
             {
                 test:/\.less$/,
                 use: [
+                    {loader: './loaders/b-loader.js'},
                     MiniCssExtractPlugin.loader,
                     'css-loader',
                     {
@@ -47,14 +52,20 @@ module.exports = {
                         options: {
                             postcssOptions: {
                                 plugins: [
-                                    'postcss-preset-env',
                                     'cssnano',
+                                    'postcss-preset-env',
                                 ],
                             },
                         },
                     },
                     {
                         loader: 'less-loader',
+                        options: {
+                            lessOptions: {
+                                javascriptEnabled: true,
+                            },
+                            sourceMap: true,
+                        },
                     },
                 ],
             },
@@ -96,6 +107,7 @@ module.exports = {
         new MiniCssExtractPlugin({
             chunkFilename: '[name].css',
             filename: '[name].css',
+            ignoreOrder: true,
         }),
     ],
 };

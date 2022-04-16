@@ -9,6 +9,7 @@ import {useSelector} from 'react-redux';
 import {CoreApiGetResponse} from '../../api/types';
 import {tableDataIsPendingSelector, tableDataSelector} from '../../selectors/testUserSelectorComponentSelectors';
 import {tableDataLoader} from '../../utils/tableDataLoader';
+import {COLUMNS} from './consts';
 
 import {b} from './Page.less';
 
@@ -26,12 +27,18 @@ const Core = () => {
                 Sample Page
             </Typography.Title>
 
-            <Input.Search/>
+            <Input.Search
+                className={b('searchInput')}
+                placeholder="Type name here"
+            />
 
             <Table<CoreApiGetResponse>
                 rowKey={item => item?.id}
                 loading={dataIsPending}
                 dataSource={data}
+                columns={COLUMNS}
+                pagination={false}
+                scroll={{x: true}}
             />
         </div>
     );

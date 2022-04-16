@@ -5,6 +5,8 @@ Boilerplate with Webpack, TS, Less, React, Antd ready
 - Typescript
 - Less
 - React
+- Redux
+- Axios
 - Antd
 - Eslint
 - Stylelint

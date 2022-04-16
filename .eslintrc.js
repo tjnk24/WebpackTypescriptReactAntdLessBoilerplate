@@ -208,7 +208,7 @@ module.exports = {
 
     // React Hooks
     'react-hooks/rules-of-hooks': 2,
-    'react-hooks/exhaustive-deps': 2,
+    'react-hooks/exhaustive-deps': 0,
 
     //imports
     'import/order': [

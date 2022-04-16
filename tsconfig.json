@@ -13,6 +13,9 @@
         "paths": {
             "__pages/*": ["./src/pages/*"],
             "__components/*": ["./src/components/*"],
+            "__utils/*": ["./src/utils/*"],
+            "__types/*": ["./src/types/*"],
+            "__store/*": ["./src/store/*"],
         }
     }
 }

@@ -34,7 +34,7 @@ module.exports = {
     'plugin:@typescript-eslint/recommended-requiring-type-checking',
     'plugin:jsx-a11y/recommended',
     'react-app',
-],
+  ],
   rules: {
     // Code Style
     'arrow-parens': ['error', 'as-needed'],
@@ -122,7 +122,6 @@ module.exports = {
         }
     ],
 
-
     // TypeScript
     '@typescript-eslint/no-angle-bracket-type-assertion': 0,
     '@typescript-eslint/camelcase': 0,
@@ -160,6 +159,13 @@ module.exports = {
             }
         }
     ],
+
+    //TODO REMOVE #20
+    '@typescript-eslint/no-unsafe-assignment': 0,
+    '@typescript-eslint/no-unsafe-call': 0,
+    '@typescript-eslint/no-unsafe-return': 0,
+    '@typescript-eslint/no-unsafe-assignment': 0,
+    '@typescript-eslint/no-unsafe-member-access': 0,
 
     // React
     'react/jsx-no-useless-fragment': 2,
@@ -247,4 +253,12 @@ module.exports = {
         },
     ],
   },
+  overrides: [
+    {
+        files: ['*.ts', '*.tsx'],
+        rules: {
+            '@typescript-eslint/explicit-module-boundary-types': ['off'],
+        },
+    },
+],
 };

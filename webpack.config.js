@@ -1,9 +1,10 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const CssMinimizerWebpackPlugin = require('css-minimizer-webpack-plugin');
+const DotenvWebpack = require('dotenv-webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const path = require('path');
 const TerserPlugin = require('terser-webpack-plugin');
 
 const development = process.env.NODE_ENV !== 'production';
@@ -30,6 +31,9 @@ module.exports = {
         alias: {
             '__components': path.resolve(__dirname, 'src', 'components'),
             '__pages': path.resolve(__dirname, 'src', 'pages'),
+            '__utils': path.resolve(__dirname, 'src', 'utils'),
+            '__types': path.resolve(__dirname, 'src', 'types'),
+            '__store': path.resolve(__dirname, 'src', 'store'),
         },
     },
     module: {
@@ -95,6 +99,7 @@ module.exports = {
         ],
     },
     plugins: [
+        new DotenvWebpack(),
         new CleanWebpackPlugin(),
         new CopyWebpackPlugin({
             patterns: [

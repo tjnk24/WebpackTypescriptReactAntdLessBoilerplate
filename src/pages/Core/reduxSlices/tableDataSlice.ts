@@ -5,10 +5,7 @@ import {Status} from '__store/types';
 import {CoreApiGetResponse} from '../api/types';
 import {CorePageStoreState} from '../types';
 
-const initialState: CorePageStoreState = {
-    error: null,
-    status: null,
-};
+const initialState: CorePageStoreState = {};
 
 export const tableDataSlice = createSlice({
     name: 'tableData',

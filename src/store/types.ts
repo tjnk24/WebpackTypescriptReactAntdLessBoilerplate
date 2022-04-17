@@ -5,7 +5,7 @@ export enum Status {
 }
 
 export type CommonStoreState<D> = {
-    status: Status | null;
-    error: string | null;
+    status?: Status;
+    error?: string;
     data?: D;
 }

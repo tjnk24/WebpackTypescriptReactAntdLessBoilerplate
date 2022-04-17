@@ -1,9 +1,11 @@
 import {configureStore} from '@reduxjs/toolkit';
-import reduxLogger from 'redux-logger';
+import {createLogger} from 'redux-logger';
 
 import {tableDataSlice} from '__pages/Core/reduxSlices/tableDataSlice';
 
+const logger = createLogger({collapsed: true});
+
 export const store = configureStore({
     reducer: tableDataSlice.reducer,
-    middleware: [reduxLogger],
+    middleware: [logger],
 });

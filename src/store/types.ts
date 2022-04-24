@@ -13,5 +13,3 @@ export type StoreState<D> = {
 }
 
 export type CommonStore = ReturnType<typeof store.getState>;
-
-export type ExtendedState<D> = CommonStore & StoreState<D>;

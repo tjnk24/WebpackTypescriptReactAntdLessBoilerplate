@@ -1,6 +1,6 @@
-import {store} from '__store/base';
+import {store} from '__store/configureStore';
 
-import {apiInstance} from '../api/coreApi';
+import {apiInstance} from '../api/usersApi';
 import {actions} from '../reduxSlices/tableDataSlice';
 
 const {dispatch} = store;

@@ -2,20 +2,19 @@ import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 
 import {Status} from '__store/types';
 
-import {CoreApiGetResponse} from '../api/types';
-import {CorePageStoreState} from '../types';
+import {UsersApiGetResponse} from '../api/types';
 
-const initialState: CorePageStoreState = {};
+const initialState: UsersApiGetResponse[] = [];
 
-export const tableDataSlice = createSlice({
-    name: 'tableData',
+export const usersTableDataSlice = createSlice({
+    name: 'usersTableData',
     initialState,
     reducers: {
         pending: state => ({
             ...state,
             status: Status.Pending,
         }),
-        success: (state, {payload}: PayloadAction<CoreApiGetResponse[]>) => ({
+        success: (state, {payload}: PayloadAction<UsersApiGetResponse[]>) => ({
             ...state,
             status: Status.Success,
             data: payload,
@@ -28,4 +27,4 @@ export const tableDataSlice = createSlice({
     },
 });
 
-export const actions = tableDataSlice.actions;
+export const actions = usersTableDataSlice.actions;

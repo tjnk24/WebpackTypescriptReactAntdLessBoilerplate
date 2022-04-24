@@ -1,24 +1,22 @@
+import {ConnectedRouter} from 'connected-react-router';
 import React from 'react';
+import ReactDOM from 'react-dom';
 import 'antd/dist/antd.less';
-import {createRoot} from 'react-dom/client';
 import {Provider} from 'react-redux';
-
 import './less/main.less';
 
 import ErrorBoundary from '__components/ErrorBoundary';
 import Core from '__pages/Core';
-import {store} from '__store/base';
-
-const rootContainer = document.getElementById('root') as Element;
-
-const root = createRoot(rootContainer);
+import {store, history} from '__store/configureStore';
 
 const renderElement = (
     <Provider store={store}>
-        <ErrorBoundary>
-            <Core/>
-        </ErrorBoundary>
+        <ConnectedRouter history={history}>
+            <ErrorBoundary>
+                <Core/>
+            </ErrorBoundary>
+        </ConnectedRouter>
     </Provider>
 );
 
-root.render(renderElement);
+ReactDOM.render(renderElement, document.getElementById('root'));

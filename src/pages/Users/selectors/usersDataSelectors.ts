@@ -2,15 +2,15 @@ import {createSelector} from 'reselect';
 
 import {Status} from '__store/types';
 
-import {CorePageStoreState} from '../types';
+import {UsersStoreState} from '../types';
 
 export const tableDataSelector = createSelector(
-    (state: CorePageStoreState) => state?.data,
+    (state: UsersStoreState) => state?.usersTableData?.data,
     data => data || [],
 );
 
 export const tableDataIsPendingSelector = createSelector(
-    (state: CorePageStoreState) => state?.status,
+    (state: UsersStoreState) => state?.usersTableData?.status,
     status => status === Status.Pending,
 );
 

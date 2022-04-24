@@ -2,21 +2,21 @@ import {Typography} from 'antd';
 import {ColumnsType} from 'antd/lib/table';
 import React from 'react';
 
-import {CoreApiGetResponse} from '__pages/Core/api/types';
+import {UsersApiGetResponse} from '__pages/Users/api/types';
 import {makeTypeName} from '__utils/makeTypeName';
 
-export const COLUMNS: ColumnsType<CoreApiGetResponse> = [
+export const COLUMNS: ColumnsType<UsersApiGetResponse> = [
     {
         title: 'Name',
-        dataIndex: makeTypeName<CoreApiGetResponse>('name'),
+        dataIndex: makeTypeName<UsersApiGetResponse>('name'),
     },
     {
         title: 'Email',
-        dataIndex: makeTypeName<CoreApiGetResponse>('email'),
+        dataIndex: makeTypeName<UsersApiGetResponse>('email'),
     },
     {
         title: 'Phone',
-        dataIndex: makeTypeName<CoreApiGetResponse>('phone'),
+        dataIndex: makeTypeName<UsersApiGetResponse>('phone'),
     },
     {
         title: 'Home address',
@@ -28,7 +28,7 @@ export const COLUMNS: ColumnsType<CoreApiGetResponse> = [
     },
     {
         title: 'Username',
-        dataIndex: makeTypeName<CoreApiGetResponse>('username'),
+        dataIndex: makeTypeName<UsersApiGetResponse>('username'),
     },
     {
         title: 'Website',

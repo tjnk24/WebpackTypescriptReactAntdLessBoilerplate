@@ -16,14 +16,19 @@ module.exports = {
         filename: '[name].bundle.js',
         chunkFilename: '[name].chunk.js',
         path: path.resolve(__dirname, 'build'),
+        publicPath: '/',
         clean: true,
     },
     devtool: development && 'source-map',
     devServer: {
         port: 8080,
         static: path.resolve(__dirname, 'src'),
+        historyApiFallback: true,
         devMiddleware: {
             writeToDisk: true,
+        },
+        client: {
+            overlay: false,
         },
     },
     resolve: {
@@ -34,6 +39,8 @@ module.exports = {
             '__utils': path.resolve(__dirname, 'src', 'utils'),
             '__types': path.resolve(__dirname, 'src', 'types'),
             '__store': path.resolve(__dirname, 'src', 'store'),
+            '__selectors': path.resolve(__dirname, 'src', 'selectors'),
+            '__commonActions': path.resolve(__dirname, 'src', 'commonActions'),
         },
     },
     module: {
@@ -41,9 +48,7 @@ module.exports = {
             {
                 test: /\.(tsx|ts)$/,
                 exclude: /node_modules/,
-                use: [
-                    'ts-loader',
-                ],
+                use: [{loader: 'ts-loader'}],
             },
             {
                 test:/\.less$/,

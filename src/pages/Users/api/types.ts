@@ -17,7 +17,7 @@ export type Company = {
     name: string;
 }
 
-export type CoreApiGetResponse = {
+export type UsersApiGetResponse = {
     id: number;
     email: string;
     address: Address;
@@ -28,6 +28,6 @@ export type CoreApiGetResponse = {
     website: string;
 }
 
-export type CoreApiQueryParamsGet = {
+export type UsersApiQueryParamsGet = {
     _limit: number;
 };

@@ -16,6 +16,8 @@
             "__utils/*": ["./src/utils/*"],
             "__types/*": ["./src/types/*"],
             "__store/*": ["./src/store/*"],
+            "__selectors/*": ["./src/selectors/*"],
+            "__commonActions": ["./src/commonActions.ts"],
         }
     }
 }

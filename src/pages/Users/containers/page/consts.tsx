@@ -3,20 +3,20 @@ import {ColumnsType} from 'antd/lib/table';
 import React from 'react';
 
 import {UsersApiGetResponse} from '__pages/Users/api/types';
-import {makeTypeName} from '__utils/makeTypeName';
+import {makeTypedName} from '__utils/makeTypeName';
 
 export const COLUMNS: ColumnsType<UsersApiGetResponse> = [
     {
         title: 'Name',
-        dataIndex: makeTypeName<UsersApiGetResponse>('name'),
+        dataIndex: makeTypedName<UsersApiGetResponse>('name'),
     },
     {
         title: 'Email',
-        dataIndex: makeTypeName<UsersApiGetResponse>('email'),
+        dataIndex: makeTypedName<UsersApiGetResponse>('email'),
     },
     {
         title: 'Phone',
-        dataIndex: makeTypeName<UsersApiGetResponse>('phone'),
+        dataIndex: makeTypedName<UsersApiGetResponse>('phone'),
     },
     {
         title: 'Home address',
@@ -28,7 +28,7 @@ export const COLUMNS: ColumnsType<UsersApiGetResponse> = [
     },
     {
         title: 'Username',
-        dataIndex: makeTypeName<UsersApiGetResponse>('username'),
+        dataIndex: makeTypedName<UsersApiGetResponse>('username'),
     },
     {
         title: 'Website',

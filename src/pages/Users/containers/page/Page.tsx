@@ -7,8 +7,8 @@ import React, {useEffect, useState} from 'react';
 import {useSelector} from 'react-redux';
 
 import {UsersApiGetResponse} from '../../api/types';
+import {tableDataLoader} from '../../loaders/usersTableDataLoader';
 import {tableDataIsPendingSelector, tableDataSelector} from '../../selectors/usersDataSelectors';
-import {tableDataLoader} from '../../utils/usersTableDataLoader';
 import {COLUMNS} from './consts';
 
 import {b} from './Page.less';

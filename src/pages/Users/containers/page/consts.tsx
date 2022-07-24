@@ -3,7 +3,7 @@ import {ColumnsType} from 'antd/lib/table';
 import React from 'react';
 
 import {UsersApiGetResponse} from '__pages/Users/api/types';
-import {makeTypedName} from '__utils/makeTypeName';
+import {makeTypedName} from '__utils/makeTypedName';
 
 export const COLUMNS: ColumnsType<UsersApiGetResponse> = [
     {

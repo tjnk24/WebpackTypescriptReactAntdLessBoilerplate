@@ -1,7 +1,7 @@
 import {store} from '__store/configureStore';
 
 import {apiInstance} from '../api/usersApi';
-import {usersTableDataSlice} from '../reduxSlices/tableDataSlice';
+import {usersTableDataSlice} from '../slices/tableDataSlice';
 
 const {dispatch} = store;
 

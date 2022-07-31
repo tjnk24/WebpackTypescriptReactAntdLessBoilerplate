@@ -8,7 +8,7 @@ import Users from '__pages/Users';
 const AppRoutes = () => {
     return (
         <Switch>
-            {Users
+            {Users}
 
             {TestPage}
 

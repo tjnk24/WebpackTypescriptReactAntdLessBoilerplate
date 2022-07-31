@@ -10,16 +10,20 @@
   "scripts": {
     "start": "cross-env NODE_ENV=development && webpack serve",
     "build": "rm -rf build && mkdir build && cross-env NODE_ENV=production webpack",
-    "lint": "eslint ./src/**/*.ts && stylelint ./src/**/*.less",
     "lint-fix": "eslint ./src/**/*.ts --fix & stylelint ./src/**/*.less --fix",
     "postinstall": "npx husky install",
-    "test": "lint"
+    "test": "npm-run-all lint",
+    "lint": "npm-run-all lint:*",
+    "lint:style": "npx stylelint **/*.less",
+    "lint:tsc": "npx tsc -p tsconfig.json --skipLibCheck",
+    "lint:src": "npx eslint --ext=.ts,.tsx ./"
   },
   "dependencies": {
     "@reduxjs/toolkit": "1.8.1",
     "antd": "4.19.5",
     "axios": "0.26.1",
     "connected-react-router": "6.9.2",
+    "npm-run-all": "^4.1.5",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-redux": "7.2.8",

@@ -1,16 +1,11 @@
 import {combineReducers, configureStore} from '@reduxjs/toolkit';
-import {connectRouter, routerMiddleware} from 'connected-react-router';
-import {createBrowserHistory} from 'history';
+import {routerMiddleware} from 'connected-react-router';
 import {createLogger} from 'redux-logger';
 
-import {usersTableDataSlice} from '__pages/Users/reduxSlices/tableDataSlice';
+import {history} from './history';
+import reducerRegistry from './reducerRegistry';
 
-export const history = createBrowserHistory();
-
-const rootReducer = combineReducers({
-    usersTableData: usersTableDataSlice.reducer,
-    router: connectRouter(history),
-});
+const rootReducer = combineReducers(reducerRegistry.reducers);
 
 const logger = createLogger({collapsed: true});
 
@@ -20,4 +15,10 @@ export const store = configureStore({
         routerMiddleware(history),
         logger,
     ],
+});
+
+reducerRegistry.setChangeListener(reducers => {
+    store.replaceReducer(combineReducers(reducers));
+
+    store.dispatch({type: '@@redux/RECOMBINE'});
 });

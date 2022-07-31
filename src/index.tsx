@@ -7,7 +7,8 @@ import './less/main.less';
 
 import ErrorBoundary from '__components/ErrorBoundary';
 import Core from '__pages/Core';
-import {store, history} from '__store/configureStore';
+import {store} from '__store/configureStore';
+import {history} from '__store/history';
 
 const renderElement = (
     <Provider store={store}>

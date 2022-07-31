@@ -1,7 +1,7 @@
 import {store} from '__store/configureStore';
 
 import {apiInstance} from '../api/usersApi';
-import {actions} from '../reduxSlices/tableDataSlice';
+import {usersTableDataSlice} from '../reduxSlices/tableDataSlice';
 
 const {dispatch} = store;
 
@@ -9,7 +9,7 @@ const {
     failed,
     pending,
     success,
-} = actions;
+} = usersTableDataSlice.actions;
 
 export const tableDataLoader = async () => {
     try {

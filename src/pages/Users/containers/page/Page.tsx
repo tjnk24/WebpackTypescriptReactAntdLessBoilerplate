@@ -56,9 +56,9 @@ const Users = () => {
             </div>
 
             <Table<UsersApiGetResponse>
-                rowKey={item => item?.id}
-                loading={dataIsPending}
                 dataSource={searchData}
+                loading={dataIsPending}
+                rowKey={item => item?.id}
                 columns={COLUMNS}
                 pagination={false}
                 scroll={{x: true}}

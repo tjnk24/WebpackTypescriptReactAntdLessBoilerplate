@@ -7,7 +7,7 @@ import {UsersApiGetResponse} from '../api/types';
 const initialState: UsersApiGetResponse[] = [];
 
 export const usersTableDataSlice = createSlice({
-    name: '@usersTableData',
+    name: 'usersTableData',
     initialState,
     reducers: {
         pending: state => ({

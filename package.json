@@ -12,7 +12,8 @@
     "build": "rm -rf build && mkdir build && cross-env NODE_ENV=production webpack",
     "lint": "eslint ./src/**/*.ts && stylelint ./src/**/*.less",
     "lint-fix": "eslint ./src/**/*.ts --fix & stylelint ./src/**/*.less --fix",
-    "postinstall": "npx husky install"
+    "postinstall": "npx husky install",
+    "test": "lint"
   },
   "dependencies": {
     "@reduxjs/toolkit": "1.8.1",

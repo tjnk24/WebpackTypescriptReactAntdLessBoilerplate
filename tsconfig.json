@@ -18,6 +18,7 @@
             "__store/*": ["./src/store/*"],
             "__selectors/*": ["./src/selectors/*"],
             "__commonActions": ["./src/commonActions.ts"],
+            "__routes": ["./src/routes.ts"],
         }
     }
 }

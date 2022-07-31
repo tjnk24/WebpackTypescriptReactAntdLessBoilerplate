@@ -41,6 +41,7 @@ module.exports = {
             '__store': path.resolve(__dirname, 'src', 'store'),
             '__selectors': path.resolve(__dirname, 'src', 'selectors'),
             '__commonActions': path.resolve(__dirname, 'src', 'commonActions'),
+            '__routes': path.resolve(__dirname, 'src', 'routes'),
         },
     },
     module: {

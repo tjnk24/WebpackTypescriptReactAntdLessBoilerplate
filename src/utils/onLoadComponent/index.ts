@@ -1,0 +1,1 @@
+export {onLoadComponent} from './onLoadComponent';

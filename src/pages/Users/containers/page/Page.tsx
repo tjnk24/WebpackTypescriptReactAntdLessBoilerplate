@@ -7,7 +7,6 @@ import React, {useEffect, useState} from 'react';
 import {useSelector} from 'react-redux';
 
 import {UsersApiGetResponse} from '../../api/types';
-import {tableDataLoader} from '../../loaders/usersTableDataLoader';
 import {tableDataIsPendingSelector, tableDataSelector} from '../../selectors/usersDataSelectors';
 import {COLUMNS} from './consts';
 
@@ -28,10 +27,6 @@ const Users = () => {
 
         setSearchData(searchingItems);
     };
-
-    useEffect(() => {
-        void tableDataLoader();
-    }, []);
 
     useEffect(() => {
         setSearchData(data);

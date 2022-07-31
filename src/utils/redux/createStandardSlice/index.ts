@@ -1,0 +1,1 @@
+export {createStandardSlice} from './createStandardSlice';

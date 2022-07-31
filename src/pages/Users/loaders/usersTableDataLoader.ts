@@ -1,7 +1,7 @@
 import {store} from '__store/configureStore';
 
 import {apiInstance} from '../api/usersApi';
-import {usersTableDataSlice} from '../slices/tableDataSlice';
+import {tableDataSlice} from '../slices/tableDataSlice';
 
 const {dispatch} = store;
 
@@ -9,7 +9,7 @@ const {
     failed,
     pending,
     success,
-} = usersTableDataSlice.actions;
+} = tableDataSlice.actions;
 
 export const tableDataLoader = async () => {
     try {

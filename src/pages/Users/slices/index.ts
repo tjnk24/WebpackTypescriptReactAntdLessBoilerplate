@@ -1,5 +1,9 @@
-import {usersTableDataSlice} from './tableDataSlice';
+import {tableDataSlice} from './tableDataSlice';
 
 export const reducers = {
-    [usersTableDataSlice.name]: usersTableDataSlice.reducer,
+    [tableDataSlice.name]: tableDataSlice.reducer,
+};
+
+export const actions = {
+    [tableDataSlice.name]: tableDataSlice.actions,
 };

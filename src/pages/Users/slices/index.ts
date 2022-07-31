@@ -1,9 +1,10 @@
+import {USERS_TABLE_DATA} from '../consts';
 import {tableDataSlice} from './tableDataSlice';
 
 export const reducers = {
-    [tableDataSlice.name]: tableDataSlice.reducer,
+    [USERS_TABLE_DATA]: tableDataSlice.reducer,
 };
 
 export const actions = {
-    [tableDataSlice.name]: tableDataSlice.actions,
+    [USERS_TABLE_DATA]: tableDataSlice.actions,
 };

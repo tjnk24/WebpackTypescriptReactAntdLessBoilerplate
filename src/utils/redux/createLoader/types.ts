@@ -6,4 +6,4 @@ export type BaseActions<T> = {
     failed: ActionCreatorWithPayload<string, string>;
 }
 
-export type AsyncGetRequest<T> = () => Promise<T>;
+export type AsyncRequest<T> = () => Promise<T>;

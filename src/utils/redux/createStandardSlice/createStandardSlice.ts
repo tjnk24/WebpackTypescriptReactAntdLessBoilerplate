@@ -7,7 +7,7 @@ import {InitialStateType} from './types';
 export const createStandardSlice = <T>(sliceName: string) => {
     const initialState: InitialStateType<T> = {data: null};
 
-    return createSlice({
+    const slice = createSlice({
         name: sliceName,
         initialState,
         reducers: {
@@ -26,4 +26,9 @@ export const createStandardSlice = <T>(sliceName: string) => {
             }),
         },
     });
+
+    return {
+        ...slice,
+        actions: {...slice.actions}, // done for better types displaying
+    };
 };

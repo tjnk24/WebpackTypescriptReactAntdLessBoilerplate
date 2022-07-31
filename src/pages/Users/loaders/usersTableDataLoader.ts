@@ -1,24 +1,8 @@
 import {store} from '__store/configureStore';
+import {createLoader} from '__utils/redux/createLoader/createLoader';
+import {UsersApiGetResponse} from '../api/types';
 
 import {apiInstance} from '../api/usersApi';
 import {tableDataSlice} from '../slices/tableDataSlice';
 
-const {dispatch} = store;
-
-const {
-    failed,
-    pending,
-    success,
-} = tableDataSlice.actions;
-
-export const tableDataLoader = async () => {
-    try {
-        dispatch(pending());
-
-        const data = await apiInstance.get();
-
-        dispatch(success(data));
-    } catch (error: unknown | any) {
-        dispatch(failed(error?.message as string));
-    }
-};
+export const tableDataLoader = createLoader<UsersApiGetResponse[]>(tableDataSlice.actions, apiInstance.get)

@@ -49,6 +49,7 @@ const Users = () => {
                     className={b('searchInput')}
                     placeholder="Type name here"
                     onSearch={onSearch}
+                    allowClear
                 />
             </div>
 

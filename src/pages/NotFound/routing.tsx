@@ -1,8 +1,8 @@
 import loadable from '@loadable/component';
 import {Spin} from 'antd';
 import React from 'react';
-import {Route} from 'react-router';
 
+import AppRoute from '__components/AppRoute';
 import {ROUTES} from '__routes';
 
 const AsyncPage = loadable(
@@ -11,8 +11,10 @@ const AsyncPage = loadable(
 );
 
 export default (
-    <Route
+    <AppRoute
+        exact
         path={ROUTES.NOT_FOUND.INDEX}
         component={AsyncPage}
+        title="Not Found"
     />
 );

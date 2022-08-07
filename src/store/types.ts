@@ -1,3 +1,5 @@
+import {BaseStore} from '__reducers';
+
 import {store} from './configureStore';
 
 export enum Status {
@@ -12,4 +14,4 @@ export type StoreState<D> = {
     data?: D;
 }
 
-export type CommonStore = ReturnType<typeof store.getState>;
+export type CommonStore = ReturnType<typeof store.getState> & BaseStore;

@@ -6,3 +6,8 @@ export const routerSelector = createSelector(
     (state: CommonStore) => state.router,
     router => router,
 );
+
+export const pathnameSelector = createSelector(
+    routerSelector,
+    ({location}) => location.pathname,
+);

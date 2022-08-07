@@ -1,6 +1,5 @@
-import {connectRouter} from 'connected-react-router';
+import {reducers} from '__reducers';
 
-import {history} from '../history';
 import {
     EmitChange,
     EmitChangeListener,
@@ -10,9 +9,7 @@ import {
 class ReducerRegistry {
     emitChange: EmitChange = null;
 
-    reducers: RegistryReducers = {
-        router: connectRouter(history),
-    };
+    reducers: RegistryReducers = reducers;
 
     public register = (newReducers: RegistryReducers) => {
         this.reducers = {...this.reducers, ...newReducers};

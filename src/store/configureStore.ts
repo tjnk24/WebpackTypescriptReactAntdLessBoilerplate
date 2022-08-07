@@ -2,7 +2,8 @@ import {combineReducers, configureStore} from '@reduxjs/toolkit';
 import {routerMiddleware} from 'connected-react-router';
 import {createLogger} from 'redux-logger';
 
-import {history} from './history';
+import {history} from '__store/history';
+
 import reducerRegistry from './reducerRegistry';
 
 const rootReducer = combineReducers(reducerRegistry.reducers);

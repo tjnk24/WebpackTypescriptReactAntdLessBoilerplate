@@ -16,6 +16,8 @@
             "__utils/*": ["./src/utils/*"],
             "__types/*": ["./src/types/*"],
             "__store/*": ["./src/store/*"],
+            "__reducers*": ["./src/reducers/index.ts"],
+            "__reducers/*": ["./src/reducers/*"],
             "__selectors/*": ["./src/selectors/*"],
             "__commonActions": ["./src/commonActions.ts"],
             "__routes": ["./src/routes.ts"],

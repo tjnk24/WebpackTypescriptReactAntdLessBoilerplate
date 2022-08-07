@@ -1,6 +1,5 @@
-import {Typography} from 'antd';
+import {Button, Typography} from 'antd';
 import React from 'react';
-import {Link} from 'react-router-dom';
 
 import {ROUTES} from '__routes';
 
@@ -11,6 +10,11 @@ export default class ErrorBoundary extends React.PureComponent<Props, State> {
     public state: State = {
         error: null,
         errorInfo: null,
+    };
+
+    private onGoToUsersClick = (event: React.MouseEvent) => {
+        event.preventDefault();
+        window.location.assign(ROUTES.USERS.INDEX);
     };
 
     public componentDidCatch(error: Error, errorInfo: unknown) {
@@ -30,9 +34,9 @@ export default class ErrorBoundary extends React.PureComponent<Props, State> {
 
                     <br/>
 
-                    <Link to={ROUTES.USERS.INDEX}>
+                    <Button onClick={this.onGoToUsersClick}>
                         Return to users page
-                    </Link>
+                    </Button>
                 </AppLayout>
             );
         }

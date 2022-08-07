@@ -1,8 +1,10 @@
 import React from 'react';
 
+import AppLayout from '__components/AppLayout';
+
 const Page = () => {
     return (
-        <div>Page Not Found</div>
+        <AppLayout>Page Not Found</AppLayout>
     );
 };
 

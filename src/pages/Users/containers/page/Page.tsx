@@ -6,8 +6,10 @@ import {
 import React, {useEffect, useState} from 'react';
 import {useSelector} from 'react-redux';
 
+import AppLayout from '__components/AppLayout';
+
 import {UsersApiGetResponse} from '../../api/types';
-import {tableDataIsPendingSelector, tableDataSelector} from '../../selectors/usersDataSelectors';
+import {tableDataIsPendingSelector, tableDataSelector} from '../../selectors';
 import {COLUMNS} from './consts';
 
 import {b} from './Page.less';
@@ -33,7 +35,7 @@ const Users = () => {
     }, [dataIsPending]);
 
     return (
-        <div className={b()}>
+        <AppLayout className={b()}>
             <Typography.Title>
                 Sample Page
             </Typography.Title>
@@ -58,7 +60,7 @@ const Users = () => {
                 pagination={false}
                 scroll={{x: true}}
             />
-        </div>
+        </AppLayout>
     );
 };
 

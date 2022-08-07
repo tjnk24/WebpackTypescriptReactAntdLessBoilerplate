@@ -1,6 +1,10 @@
 import {Typography} from 'antd';
 import React from 'react';
+import {Link} from 'react-router-dom';
 
+import {ROUTES} from '__routes';
+
+import AppLayout from '../AppLayout';
 import {Props, State} from './types';
 
 export default class ErrorBoundary extends React.PureComponent<Props, State> {
@@ -19,9 +23,17 @@ export default class ErrorBoundary extends React.PureComponent<Props, State> {
 
         if (state.errorInfo) {
             return (
-                <Typography.Text>
-                    Something went wrong, application crashed
-                </Typography.Text>
+                <AppLayout>
+                    <Typography.Text>
+                        Something went wrong, application crashed
+                    </Typography.Text>
+
+                    <br/>
+
+                    <Link to={ROUTES.USERS.INDEX}>
+                        Return to users page
+                    </Link>
+                </AppLayout>
             );
         }
 

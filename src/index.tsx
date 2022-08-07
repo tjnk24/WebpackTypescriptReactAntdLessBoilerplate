@@ -1,3 +1,4 @@
+import {loadableReady} from '@loadable/component';
 import {ConnectedRouter} from 'connected-react-router';
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -20,4 +21,10 @@ const renderElement = (
     </Provider>
 );
 
-ReactDOM.render(renderElement, document.getElementById('root'));
+const render = () => {
+    ReactDOM.render(renderElement, document.getElementById('root'));
+};
+
+void loadableReady(() => {
+    render();
+});

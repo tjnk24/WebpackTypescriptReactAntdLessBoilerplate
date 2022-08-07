@@ -10,10 +10,11 @@ import {pathnameSelector} from '__selectors/routerSelectors';
 const TopNavigation = () => {
     const pathname = useSelector(pathnameSelector);
 
-    const defaultKey = pathname.replace('/', '');
-
     return (
-        <Menu mode="horizontal" defaultSelectedKeys={[defaultKey]}>
+        <Menu
+            mode="horizontal"
+            selectedKeys={[pathname.replace('/', '')]}
+        >
             <MenuItem key="users">
                 <Link to={ROUTES.USERS.INDEX}>
                     Users

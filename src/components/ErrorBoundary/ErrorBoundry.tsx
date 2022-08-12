@@ -34,6 +34,8 @@ export default class ErrorBoundary extends React.PureComponent<Props, State> {
 
                     <br/>
 
+                    <br/>
+
                     <Button onClick={this.onGoToUsersClick}>
                         Return to users page
                     </Button>

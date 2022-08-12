@@ -21,6 +21,7 @@ module.exports = {
     },
     devtool: development && 'source-map',
     devServer: {
+        open: true,
         port: 8080,
         static: path.resolve(__dirname, 'src'),
         historyApiFallback: true,

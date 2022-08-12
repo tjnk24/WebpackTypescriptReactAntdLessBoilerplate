@@ -19,7 +19,7 @@
             "__reducers*": ["./src/reducers/index.ts"],
             "__reducers/*": ["./src/reducers/*"],
             "__selectors/*": ["./src/selectors/*"],
-            "__commonActions": ["./src/commonActions.ts"],
+            "__commonActions": ["src/commonActions/index.ts"],
             "__routes": ["./src/routes.ts"],
         }
     }

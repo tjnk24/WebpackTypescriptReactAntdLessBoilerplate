@@ -11,16 +11,16 @@
         "esModuleInterop": true,
         "baseUrl": ".",
         "paths": {
-            "__pages/*": ["./src/pages/*"],
-            "__components/*": ["./src/components/*"],
-            "__utils/*": ["./src/utils/*"],
-            "__types/*": ["./src/types/*"],
-            "__store/*": ["./src/store/*"],
-            "__reducers*": ["./src/reducers/index.ts"],
-            "__reducers/*": ["./src/reducers/*"],
-            "__selectors/*": ["./src/selectors/*"],
-            "__commonActions": ["src/commonActions/index.ts"],
-            "__routes": ["./src/routes.ts"],
+            "__pages/*": ["./src/client/pages/*"],
+            "__components/*": ["./src/client/components/*"],
+            "__utils/*": ["./src/client/utils/*"],
+            "__types/*": ["./src/client/types/*"],
+            "__store/*": ["./src/client/store/*"],
+            "__reducers*": ["./src/client/reducers/index.ts"],
+            "__reducers/*": ["./src/client/reducers/*"],
+            "__selectors/*": ["./src/client/selectors/*"],
+            "__commonActions": ["src/client/commonActions/index.ts"],
+            "__routes": ["./src/client/routes.ts"],
         }
     }
 }

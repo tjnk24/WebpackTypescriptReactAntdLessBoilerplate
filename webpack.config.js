@@ -11,7 +11,7 @@ const development = process.env.NODE_ENV !== 'production';
 
 module.exports = {
     mode: development ? 'development' : 'production',
-    entry: './src/index.tsx',
+    entry: './src/client/index.tsx',
     output: {
         filename: '[name].bundle.js',
         chunkFilename: '[name].chunk.js',
@@ -35,15 +35,15 @@ module.exports = {
     resolve: {
         extensions: ['.js', '.ts', '.tsx'],
         alias: {
-            '__components': path.resolve(__dirname, 'src', 'components'),
-            '__pages': path.resolve(__dirname, 'src', 'pages'),
-            '__utils': path.resolve(__dirname, 'src', 'utils'),
-            '__types': path.resolve(__dirname, 'src', 'types'),
-            '__store': path.resolve(__dirname, 'src', 'store'),
-            '__reducers': path.resolve(__dirname, 'src', 'reducers'),
-            '__selectors': path.resolve(__dirname, 'src', 'selectors'),
-            '__commonActions': path.resolve(__dirname, 'src', 'commonActions'),
-            '__routes': path.resolve(__dirname, 'src', 'routes'),
+            '__components': path.resolve(__dirname, 'src', 'client', 'components'),
+            '__pages': path.resolve(__dirname, 'src', 'client', 'pages'),
+            '__utils': path.resolve(__dirname, 'src', 'client', 'utils'),
+            '__types': path.resolve(__dirname, 'src', 'client', 'types'),
+            '__store': path.resolve(__dirname, 'src', 'client', 'store'),
+            '__reducers': path.resolve(__dirname, 'src', 'client', 'reducers'),
+            '__selectors': path.resolve(__dirname, 'src', 'client', 'selectors'),
+            '__commonActions': path.resolve(__dirname, 'src', 'client', 'commonActions'),
+            '__routes': path.resolve(__dirname, 'src', 'client', 'routes'),
         },
     },
     module: {
@@ -111,11 +111,11 @@ module.exports = {
         new CleanWebpackPlugin(),
         new CopyWebpackPlugin({
             patterns: [
-                {from: 'src/images', to: 'images'},
+                {from: 'src/client/images', to: 'images'},
             ],
         }),
         new HtmlWebpackPlugin({
-            template: './src/index.html',
+            template: './src/client/index.html',
         }),
         new MiniCssExtractPlugin({
             chunkFilename: '[name].css',

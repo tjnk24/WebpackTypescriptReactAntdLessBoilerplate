@@ -6,7 +6,6 @@ import {RouterState} from '__utils/routing/types';
 import {
     RouterActionsKeyType,
     RouterActionType,
-    RouterArgumentType,
 } from './types';
 
 export const createRouterActions = () => {
@@ -17,7 +16,8 @@ export const createRouterActions = () => {
 
         const routerAction = routerActions[methodKey] as RouterActionType;
 
-        actions[methodKey] = (arg0?: RouterArgumentType, arg1?: RouterState) => store.dispatch(routerAction(arg0, arg1));
+        actions[methodKey] = (argumentFirst?: string | number, argumentSecond?: RouterState) =>
+            store.dispatch(routerAction(argumentFirst, argumentSecond));
     });
 
     return actions;

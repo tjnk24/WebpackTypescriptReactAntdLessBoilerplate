@@ -1,11 +1,21 @@
 {
     "compilerOptions": {
+        "target": "es5",
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "declaration": false,
+        "noImplicitAny": false,
+        "noImplicitReturns": false,
+        "removeComments": false,
+        "resolveJsonModule": true,
+        "strictNullChecks": false,
+        "skipLibCheck": true,
+        "lib": ["dom", "es2018"],
         "strict": true,
         "outDir": "./build/",
         "sourceMap": true,
-        "noImplicitAny": true,
-        "module": "commonjs",
-        "target": "es6",
+        "module": "ESNext",
+        "moduleResolution": "node",
         "jsx": "react",
         "allowSyntheticDefaultImports": true,
         "esModuleInterop": true,
@@ -21,6 +31,15 @@
             "__selectors/*": ["./src/client/selectors/*"],
             "__commonActions": ["src/client/commonActions/index.ts"],
             "__routes": ["./src/client/routes.ts"],
+            "__config": ["./src/client/config.ts"],
         }
-    }
+    },
+    "include": [
+        "src/client",
+        "src/server",
+        "src/typings/**/*.d.ts",
+        "node_modules/@types",
+    ],
+    "compileOnSave": false,
+    "exclude": ["public", "node_modules", "build"]
 }

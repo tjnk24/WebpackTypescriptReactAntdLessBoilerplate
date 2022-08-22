@@ -1,62 +1,99 @@
+const LoadablePlugin = require('@loadable/webpack-plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const CssMinimizerWebpackPlugin = require('css-minimizer-webpack-plugin');
-const DotenvWebpack = require('dotenv-webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
 const TerserPlugin = require('terser-webpack-plugin');
+const tsImportPluginFactory = require('ts-import-plugin');
+const keysTransformer = require('ts-transformer-keys/transformer').default;
+const {createLoadableComponentsTransformer} = require('typescript-loadable-components-plugin');
+const {DefinePlugin} = require('webpack');
+
+const globals = require('./configFiles/globals.js');
+const alias = require('./configFiles/aliases.js');
 
 const development = process.env.NODE_ENV !== 'production';
 
 module.exports = {
-    mode: development ? 'development' : 'production',
-    entry: './src/client/index.tsx',
-    output: {
-        filename: '[name].bundle.js',
-        chunkFilename: '[name].chunk.js',
-        path: path.resolve(__dirname, 'build'),
-        publicPath: '/',
-        clean: true,
-    },
+    context: __dirname,
     devtool: development && 'source-map',
     devServer: {
+        static: {
+            directory: 'build/client',
+        },
+        liveReload: false,
         open: true,
-        port: 8080,
-        static: path.resolve(__dirname, 'src'),
+        port: process.env.PORT,
+        hot: true,
         historyApiFallback: true,
+        client: {
+            logging: 'error',
+            overlay: false,
+        },
         devMiddleware: {
             writeToDisk: true,
         },
-        client: {
-            overlay: false,
-        },
+    },
+    name: 'client',
+    target: 'web',
+    entry: {
+        app: ['./src/client/index.tsx']
+    },
+    mode: development ? 'development' : 'production',
+    output: {
+        filename: '[name].bundle.js',
+        chunkFilename: '[name].chunk.js',
+        path: path.resolve(__dirname, 'build/client'),
+        publicPath: '/build/',
+        pathinfo: false,
     },
     resolve: {
-        extensions: ['.js', '.ts', '.tsx'],
-        alias: {
-            '__components': path.resolve(__dirname, 'src', 'client', 'components'),
-            '__pages': path.resolve(__dirname, 'src', 'client', 'pages'),
-            '__utils': path.resolve(__dirname, 'src', 'client', 'utils'),
-            '__types': path.resolve(__dirname, 'src', 'client', 'types'),
-            '__store': path.resolve(__dirname, 'src', 'client', 'store'),
-            '__reducers': path.resolve(__dirname, 'src', 'client', 'reducers'),
-            '__selectors': path.resolve(__dirname, 'src', 'client', 'selectors'),
-            '__commonActions': path.resolve(__dirname, 'src', 'client', 'commonActions'),
-            '__routes': path.resolve(__dirname, 'src', 'client', 'routes'),
+        modules: [
+            'node_modules',
+            path.resolve(__dirname, 'src/client'),
+        ],
+        extensions: ['.js', '.ts', '.tsx', '.json'],
+        alias,
+        fallback: {
+            crypto: false,
         },
     },
     module: {
         rules: [
             {
-                test: /\.(tsx|ts)$/,
+                test: /\.m?js/,
+                resolve: {
+                    fullySpecified: false,
+                },
+            },
+            {
+                test: /\.(jsx|tsx|js|ts)$/,
                 exclude: /node_modules/,
-                use: [{loader: 'ts-loader'}],
+                use: [{
+                    loader: 'ts-loader',
+                    options: {
+                        happyPackMode: true,
+                        configFile: path.resolve(__dirname, 'tsconfig.json'),
+                        transpileOnly: true,
+                        getCustomTransformers: program => ({
+                            before: [
+                                keysTransformer(program),
+                                tsImportPluginFactory({
+                                    libraryDirectory: 'lib',
+                                    libraryName: 'antd',
+                                }),
+                                createLoadableComponentsTransformer(program, {}),
+                            ],
+                        }),
+                    },
+                }],
             },
             {
                 test:/\.less$/,
                 use: [
-                    {loader: './loaders/b-loader.js'},
+                    {loader: './configFiles/loaders/b-loader.js'},
                     MiniCssExtractPlugin.loader,
                     'css-loader',
                     {
@@ -97,17 +134,25 @@ module.exports = {
             },
         ],
     },
-    optimization: {
-        splitChunks: {
-            chunks: 'all',
-        },
-        minimizer: [
-            new TerserPlugin(),
-            new CssMinimizerWebpackPlugin(),
-        ],
+    stats: (
+        development
+            ? {
+                all: undefined,
+                builtAt: !development,
+                chunks: !development,
+                assets: !development,
+                errors: true,
+                warnings: development,
+                outputPath: true,
+                timings: true,
+            }
+            : 'errors-only'
+    ),
+    performance: {
+        hints: false,
     },
     plugins: [
-        new DotenvWebpack(),
+        new DefinePlugin(globals),
         new CleanWebpackPlugin(),
         new CopyWebpackPlugin({
             patterns: [
@@ -122,5 +167,19 @@ module.exports = {
             filename: '[name].css',
             ignoreOrder: true,
         }),
+        new LoadablePlugin(),
     ],
+    optimization: {
+        splitChunks: {
+            chunks: 'all',
+            maxInitialRequests: Infinity,
+            minSize: 0,
+        },
+        minimizer: [
+            new TerserPlugin({
+                extractComments: false,
+            }),
+            new CssMinimizerWebpackPlugin(),
+        ],
+    },
 };

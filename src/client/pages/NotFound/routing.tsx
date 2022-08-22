@@ -6,7 +6,9 @@ import AppRoute from '__components/AppRoute';
 import {ROUTES} from '__routes';
 
 const AsyncPage = loadable(
-    () => import('./containers/page'),
+    () => import(
+        /* webpackChunkName: "notFound" */ './containers/page'
+    ),
     {fallback: <Spin/>},
 );
 

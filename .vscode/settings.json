@@ -4,6 +4,7 @@
     "typescript.preferences.quoteStyle": "single",
     "typescript.format.semicolons": "insert",
     "cSpell.words": [
+        "entrypoints",
         "zipcode"
     ],
 }

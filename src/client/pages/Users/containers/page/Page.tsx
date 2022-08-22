@@ -1,4 +1,5 @@
 import {
+    Button,
     Input,
     Table,
     Typography,
@@ -7,6 +8,7 @@ import React, {useEffect, useState} from 'react';
 import {useSelector} from 'react-redux';
 
 import AppLayout from '__components/AppLayout';
+import {routeManager} from '__utils/routing/routeManager';
 
 import {UsersApiGetResponse} from '../../api/types';
 import {tableDataIsPendingSelector, tableDataSelector} from '../../selectors';
@@ -30,6 +32,10 @@ const Users = () => {
         setSearchData(searchingItems);
     };
 
+    const onGoToTestPageClick = () => {
+        routeManager.goToTestPage();
+    };
+
     useEffect(() => {
         setSearchData(data);
     }, [dataIsPending]);
@@ -40,7 +46,7 @@ const Users = () => {
                 Sample Page
             </Typography.Title>
 
-            <div>
+            <div className={b('bottomWrapper')}>
                 <Typography.Text>
                     * Search by name
                 </Typography.Text>
@@ -51,6 +57,13 @@ const Users = () => {
                     onSearch={onSearch}
                     allowClear
                 />
+
+                <Button
+                    className={b('goToTestPageButton')}
+                    onClick={onGoToTestPageClick}
+                >
+                    Go to Test page
+                </Button>
             </div>
 
             <Table<UsersApiGetResponse>

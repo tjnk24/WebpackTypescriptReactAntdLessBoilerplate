@@ -8,25 +8,30 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "start": "cross-env NODE_ENV=development && webpack serve",
-    "build": "rm -rf build && mkdir build && cross-env NODE_ENV=production webpack",
+    "start:hmr": "better-npm-run start:hmr",
+    "start:ssr": "better-npm-run start:ssr",
+    "client:build:dev": "better-npm-run client:build:dev",
+    "client:build:dev:watch": "better-npm-run client:build:dev:watch",
+    "server:build:dev": "better-npm-run server:build:dev",
+    "server:run": "better-npm-run server:run",
+    "clean": "rm -rf build && mkdir build",
     "lint-fix": "eslint ./src/**/*.ts --fix & stylelint ./src/**/*.less --fix",
-    "postinstall": "npx husky install",
-    "test": "npm-run-all lint",
     "lint": "npm-run-all lint:*",
-    "lint:style": "npx stylelint **/*.less",
     "lint:tsc": "npx tsc -p tsconfig.json --skipLibCheck",
-    "lint:src": "npx eslint --ext=.ts,.tsx ./"
+    "lint:src": "npx eslint --ext=.ts,.tsx ./",
+    "lint:style": "npx stylelint **/*.less",
+    "test": "npm-run-all lint",
+    "postinstall": "npx husky install"
   },
   "dependencies": {
     "@loadable/component": "5.15.2",
+    "@loadable/server": "5.15.2",
     "@reduxjs/toolkit": "1.8.1",
     "antd": "4.19.5",
     "axios": "0.26.1",
     "classnames": "2.3.1",
     "connected-react-router": "6.9.2",
     "lodash.isempty": "4.4.0",
-    "npm-run-all": "^4.1.5",
     "query-string": "7.1.1",
     "react": "17.0.1",
     "react-dom": "17.0.1",
@@ -38,9 +43,11 @@
     "reselect": "4.1.5"
   },
   "devDependencies": {
+    "@loadable/webpack-plugin": "5.15.2",
     "@types/b_": "1.3.2",
-    "@types/history": "5.0.0",
+    "@types/history": "4.7.11",
     "@types/loadable__component": "5.13.4",
+    "@types/loadable__server": "5.12.6",
     "@types/lodash.isempty": "4.4.7",
     "@types/postcss-preset-env": "6.7.3",
     "@types/react": "17.0.26",
@@ -49,17 +56,18 @@
     "@types/react-router": "5.1.16",
     "@types/react-router-dom": "5.3.0",
     "@types/redux-logger": "3.0.9",
+    "@types/serialize-javascript": "5.0.2",
     "@typescript-eslint/eslint-plugin": "5.17.0",
     "@typescript-eslint/parser": "5.17.0",
     "autoprefixer": "10.4.4",
     "b_": "1.3.4",
+    "better-npm-run": "0.1.1",
     "clean-webpack-plugin": "4.0.0",
     "copy-webpack-plugin": "10.2.4",
     "cross-env": "7.0.3",
     "css-loader": "6.7.1",
     "css-minimizer-webpack-plugin": "3.4.1",
     "cssnano": "5.1.7",
-    "dotenv-webpack": "7.1.0",
     "eslint": "8.12.0",
     "eslint-config-react-app": "7.0.0",
     "eslint-plugin-eslint-comments": "3.2.0",
@@ -73,17 +81,64 @@
     "husky": "8.0.1",
     "less-loader": "10.2.0",
     "mini-css-extract-plugin": "2.6.0",
+    "nodemon": "^2.0.19",
+    "npm-run-all": "^4.1.5",
+    "null-loader": "4.0.1",
     "postcss": "8.4.12",
     "postcss-less": "6.0.0",
     "postcss-loader": "6.2.1",
     "postcss-preset-env": "7.4.3",
+    "serialize-javascript": "6.0.0",
     "style-loader": "3.3.1",
     "stylelint": "14.6.1",
     "stylelint-config-standard": "25.0.0",
+    "ts-import-plugin": "2.0.0",
     "ts-loader": "9.2.8",
+    "ts-transformer-keys": "0.4.3",
     "typescript": "4.6.3",
+    "typescript-loadable-components-plugin": "1.0.3",
     "webpack": "5.71.0",
     "webpack-cli": "4.9.2",
-    "webpack-dev-server": "4.7.4"
+    "webpack-dev-server": "4.7.4",
+    "webpack-node-externals": "3.0.0"
+  },
+  "betterScripts": {
+    "start:hmr": {
+      "command": "npm-run-all clean && webpack serve",
+      "env": {
+        "NODE_ENV": "development",
+        "HMR": "enabled"
+      }
+    },
+    "start:ssr": {
+      "command": "npm-run-all clean && npm-run-all server:build:dev && npm-run-all --parallel client:build:dev:watch server:run",
+      "env": {
+        "NODE_ENV": "development"
+      }
+    },
+    "client:build:dev": {
+      "command": "rm -rf build && mkdir build && webpack",
+      "env": {
+        "NODE_ENV": "development"
+      }
+    },
+    "client:build:dev:watch": {
+      "command": "webpack --config webpack.config.js --watch",
+      "env": {
+        "NODE_ENV": "development"
+      }
+    },
+    "server:build:dev": {
+      "command": "webpack --config webpack.config.server.js",
+      "env": {
+        "NODE_ENV": "development"
+      }
+    },
+    "server:run": {
+      "command": "nodemon --watch build/server --exec \"node build/server/server.js\"",
+      "env": {
+        "NODE_ENV": "development"
+      }
+    }
   }
 }

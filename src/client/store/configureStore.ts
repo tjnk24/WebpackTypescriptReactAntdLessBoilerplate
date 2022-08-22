@@ -6,12 +6,16 @@ import {history} from '__store/history';
 
 import reducerRegistry from './reducerRegistry';
 
-const rootReducer = combineReducers(reducerRegistry.reducers);
+const state = (window as any).__PRELOADED_STATE__;
+delete (window as any).__PRELOADED_STATE__;
+
+export const rootReducer = combineReducers(reducerRegistry.reducers);
 
 const logger = createLogger({collapsed: true});
 
 export const store = configureStore({
     reducer: rootReducer,
+    preloadedState: state,
     middleware: [
         routerMiddleware(history),
         logger,

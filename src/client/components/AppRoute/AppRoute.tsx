@@ -2,6 +2,8 @@ import React from 'react';
 import {Helmet} from 'react-helmet';
 import {Route, RouteComponentProps} from 'react-router';
 
+import ErrorBoundary from '__components/ErrorBoundary';
+
 import {Props} from './types';
 
 const AppRoute: Props = ({
@@ -21,7 +23,7 @@ const AppRoute: Props = ({
         }
 
         return (
-            <>
+            <ErrorBoundary>
                 <Helmet
                     defaultTitle="Boilerplate"
                     titleTemplate="Boilerplate - %s"
@@ -42,7 +44,7 @@ const AppRoute: Props = ({
                 </Helmet>
 
                 <Component {...routerProps} {...componentProps}/>
-            </>
+            </ErrorBoundary>
         );
     };
 

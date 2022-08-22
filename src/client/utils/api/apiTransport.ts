@@ -1,6 +1,8 @@
 import axios from 'axios';
 
+import config from '__config';
+
 export const configuredApiInstance = axios.create({
-    baseURL: process.env.BACKEND_URL,
+    baseURL: config.BACKEND_URL,
     timeout: 20000,
 });

@@ -10,3 +10,4 @@ Boilerplate with Webpack, TS, Less, React, Antd ready
 - Antd
 - Eslint
 - Stylelint
+- SSR

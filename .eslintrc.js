@@ -159,8 +159,6 @@ module.exports = {
             }
         }
     ],
-
-    //TODO REMOVE #20
     '@typescript-eslint/no-unsafe-assignment': 0,
     '@typescript-eslint/no-unsafe-call': 0,
     '@typescript-eslint/no-unsafe-return': 0,

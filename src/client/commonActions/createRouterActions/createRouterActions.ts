@@ -4,12 +4,13 @@ import {store} from '__store/configureStore';
 import {RouterState} from '__utils/routing/types';
 
 import {
+    RouterActions,
     RouterActionsKeyType,
     RouterActionType,
 } from './types';
 
 export const createRouterActions = () => {
-    const actions = {} as {[key: string]: RouterActionType};
+    const actions: RouterActions = {};
 
     Object.keys(routerActions).forEach(key => {
         const methodKey = key as RouterActionsKeyType;

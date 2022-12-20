@@ -13,4 +13,3 @@ export const tableDataIsPendingSelector = createSelector(
     (state: UsersStoreState) => state?.usersTableData?.status,
     status => status === Status.Pending,
 );
-

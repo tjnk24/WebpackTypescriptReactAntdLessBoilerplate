@@ -15,7 +15,7 @@
     "server:build:dev": "better-npm-run server:build:dev",
     "server:run": "better-npm-run server:run",
     "clean": "rm -rf build && mkdir build",
-    "lint-fix": "eslint ./src/**/*.ts --fix & stylelint ./src/**/*.less --fix",
+    "lint-fix": "eslint ./src/**/*.ts --fix & eslint ./src/**/*.tsx --fix & stylelint ./src/**/*.less --fix",
     "lint": "npm-run-all lint:*",
     "lint:tsc": "npx tsc -p tsconfig.json --skipLibCheck",
     "lint:src": "npx eslint --ext=.ts,.tsx ./",

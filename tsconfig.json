@@ -35,6 +35,9 @@
         }
     },
     "include": [
+        "*.js",
+        "*.*.js",
+        "*.ts",
         "src/client",
         "src/server",
         "src/typings/**/*.d.ts",

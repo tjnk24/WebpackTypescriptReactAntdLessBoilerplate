@@ -8,15 +8,15 @@ const {DefinePlugin} = require('webpack');
 const webpack = require('webpack');
 const nodeExternals = require('webpack-node-externals');
 
-const globals = require('./configFiles/globals.js');
 const alias = require('./configFiles/aliases.js');
+const globals = require('./configFiles/globals.js');
 
 const development = process.env.NODE_ENV !== 'production';
 
 module.exports = {
     name: 'server',
     entry: {
-        app: ['./src/server/index.ts']
+        app: ['./src/server/index.ts'],
     },
     context: __dirname,
     target: 'node',
@@ -84,15 +84,15 @@ module.exports = {
             },
             {
                 test: /\.(jpe?g|png|gif)$/i,
-                use: ['url-loader?limit=10000!img-loader?progressive=true']
+                use: ['url-loader?limit=10000!img-loader?progressive=true'],
             },
             {
                 test: /\.(ttf|otf|eot|woff(2)?)(\?[a-z0-9]+)?$/,
-                use: ['file-loader?name=fonts/[name].[ext]']
+                use: ['file-loader?name=fonts/[name].[ext]'],
             },
             {
                 test: /\.svg$/,
-                use: ['svg-inline-loader']
+                use: ['svg-inline-loader'],
             },
         ],
     },

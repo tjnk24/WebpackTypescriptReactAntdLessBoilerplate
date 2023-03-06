@@ -11,8 +11,8 @@ const keysTransformer = require('ts-transformer-keys/transformer').default;
 const {createLoadableComponentsTransformer} = require('typescript-loadable-components-plugin');
 const {DefinePlugin} = require('webpack');
 
-const globals = require('./configFiles/globals.js');
 const alias = require('./configFiles/aliases.js');
+const globals = require('./configFiles/globals.js');
 
 const development = process.env.NODE_ENV !== 'production';
 
@@ -39,7 +39,7 @@ module.exports = {
     name: 'client',
     target: 'web',
     entry: {
-        app: ['./src/client/index.tsx']
+        app: ['./src/client/index.tsx'],
     },
     mode: development ? 'development' : 'production',
     output: {
@@ -79,11 +79,13 @@ module.exports = {
                         transpileOnly: true,
                         getCustomTransformers: program => ({
                             before: [
+                                // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
                                 keysTransformer(program),
                                 tsImportPluginFactory({
                                     libraryDirectory: 'lib',
                                     libraryName: 'antd',
                                 }),
+                                // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
                                 createLoadableComponentsTransformer(program, {}),
                             ],
                         }),

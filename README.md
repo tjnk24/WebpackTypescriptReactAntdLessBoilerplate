@@ -11,3 +11,5 @@ Boilerplate with Webpack, TS, Less, React, Antd ready
 - Eslint
 - Stylelint
 - SSR
+
+Runs on node 18.12.1

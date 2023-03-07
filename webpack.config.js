@@ -2,6 +2,8 @@ const LoadablePlugin = require('@loadable/webpack-plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const CssMinimizerWebpackPlugin = require('css-minimizer-webpack-plugin');
+const EslintWebpackPlugin = require('eslint-webpack-plugin');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
@@ -15,6 +17,48 @@ const alias = require('./configFiles/aliases.js');
 const globals = require('./configFiles/globals.js');
 
 const development = process.env.NODE_ENV !== 'production';
+
+const plugins = [
+    new DefinePlugin(globals),
+    new CleanWebpackPlugin(),
+    new CopyWebpackPlugin({
+        patterns: [
+            {from: 'src/client/images', to: 'images'},
+        ],
+    }),
+    new HtmlWebpackPlugin({
+        template: './src/client/index.html',
+    }),
+    new MiniCssExtractPlugin({
+        chunkFilename: '[name].css',
+        filename: '[name].css',
+        ignoreOrder: true,
+    }),
+    new LoadablePlugin(),
+
+];
+
+if (development) {
+    plugins.push(
+        new ForkTsCheckerWebpackPlugin({
+            async: true,
+            typescript: {
+                diagnosticOptions: {
+                    semantic: true,
+                    syntactic: true,
+                },
+            },
+        }),
+        new EslintWebpackPlugin({
+            files: 'src/**/*.{ts,tsx,js,jsx}',
+            emitError: true,
+            failOnError: false,
+            emitWarning: true,
+            failOnWarning: false,
+            cache: true,
+        }),
+    );
+}
 
 module.exports = {
     context: __dirname,
@@ -153,24 +197,7 @@ module.exports = {
     performance: {
         hints: false,
     },
-    plugins: [
-        new DefinePlugin(globals),
-        new CleanWebpackPlugin(),
-        new CopyWebpackPlugin({
-            patterns: [
-                {from: 'src/client/images', to: 'images'},
-            ],
-        }),
-        new HtmlWebpackPlugin({
-            template: './src/client/index.html',
-        }),
-        new MiniCssExtractPlugin({
-            chunkFilename: '[name].css',
-            filename: '[name].css',
-            ignoreOrder: true,
-        }),
-        new LoadablePlugin(),
-    ],
+    plugins,
     optimization: {
         splitChunks: {
             chunks: 'all',

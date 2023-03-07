@@ -24,6 +24,7 @@ export const createStandardSlice = <T>(sliceName: string) => {
                 status: Status.Failed,
                 error: payload,
             }),
+            reset: () => initialState,
         },
     });
 

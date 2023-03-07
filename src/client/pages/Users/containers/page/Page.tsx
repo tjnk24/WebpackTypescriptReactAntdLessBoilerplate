@@ -8,6 +8,7 @@ import React, {useEffect, useState} from 'react';
 import {useSelector} from 'react-redux';
 
 import AppLayout from '__components/AppLayout';
+import {testGlobalCounterCountSelector} from '__selectors/testGlobalCounterSelectors';
 import {routeManager} from '__utils/routing/routeManager';
 
 import {UsersApiGetResponse} from '../../api/types';
@@ -19,6 +20,7 @@ import {b} from './Page.less';
 const Users = () => {
     const data = useSelector(tableDataSelector);
     const dataIsPending = useSelector(tableDataIsPendingSelector);
+    const globalCount = useSelector(testGlobalCounterCountSelector);
 
     const [searchData, setSearchData] = useState<UsersApiGetResponse[]>([]);
 
@@ -42,6 +44,10 @@ const Users = () => {
 
     return (
         <AppLayout className={b()}>
+            <Typography.Text>
+                Global Count: {globalCount}
+            </Typography.Text>
+
             <Typography.Title>
                 Sample Page
             </Typography.Title>

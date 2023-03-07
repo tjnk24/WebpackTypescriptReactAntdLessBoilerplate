@@ -1,6 +1,6 @@
 import {createSelector} from 'reselect';
 
-import {Status} from '__store/types';
+import {checkPending} from '__utils/redux/checkPending';
 
 import {UsersStoreState} from '../types';
 
@@ -11,5 +11,5 @@ export const tableDataSelector = createSelector(
 
 export const tableDataIsPendingSelector = createSelector(
     (state: UsersStoreState) => state?.usersTableData?.status,
-    status => status === Status.Pending,
+    checkPending,
 );

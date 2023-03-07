@@ -24,7 +24,7 @@ module.exports = {
             directory: 'build/client',
         },
         liveReload: false,
-        open: true,
+        open: ['/users'],
         port: process.env.PORT,
         hot: true,
         historyApiFallback: true,

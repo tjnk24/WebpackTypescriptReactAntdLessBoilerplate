@@ -29,7 +29,7 @@
             "__reducers*": ["./src/client/reducers/index.ts"],
             "__reducers/*": ["./src/client/reducers/*"],
             "__selectors/*": ["./src/client/selectors/*"],
-            "__commonActions": ["src/client/commonActions/index.ts"],
+            "__commonActions": ["src/client/commonActions.ts"],
             "__routes": ["./src/client/routes.ts"],
             "__config": ["./src/client/config.ts"],
         }

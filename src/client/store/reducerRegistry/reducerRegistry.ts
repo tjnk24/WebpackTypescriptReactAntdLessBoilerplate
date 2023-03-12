@@ -23,7 +23,6 @@ class ReducerRegistry {
         const newReducers: RegistryReducers = {};
 
         const unregisterKeys = Object.keys(unregisterReducers);
-
         const filteredKeys = Object.keys(this.reducers).filter(key => !unregisterKeys.includes(key));
 
         filteredKeys.forEach(key => {

@@ -13,7 +13,7 @@ export const routerPush = <T>(
     {path, queries, state}: RouterPushData<T>,
     makeHref?: boolean,
 ) => {
-    const url = isEmpty(queries) ? path : `${path}?${stringify(queries)}`;
+    const url = isEmpty(queries) ? path : `${path}?${stringify(queries, {skipEmptyString: true, skipNull: true})}`;
 
     if (makeHref) {
         return url;

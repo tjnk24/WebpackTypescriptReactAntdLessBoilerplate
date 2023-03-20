@@ -1,7 +1,7 @@
+import isEmpty from 'lodash/isEmpty';
 import {stringify} from 'query-string';
 
 import {commonActions} from '__commonActions';
-import {isEmpty} from '__utils/isEmpty';
 
 import {RouterPushData, RouterState} from './types';
 

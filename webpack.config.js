@@ -5,6 +5,7 @@ const CssMinimizerWebpackPlugin = require('css-minimizer-webpack-plugin');
 const EslintWebpackPlugin = require('eslint-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const LodashWebpackPlugin = require('lodash-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
 const TerserPlugin = require('terser-webpack-plugin');
@@ -20,6 +21,15 @@ const development = process.env.NODE_ENV !== 'production';
 
 const plugins = [
     new DefinePlugin(globals),
+    new LodashWebpackPlugin({
+        shorthands: true,
+        cloning: true,
+        currying: true,
+        collections: true,
+        coercions: true,
+        flattening: true,
+        paths: true,
+    }),
     new CleanWebpackPlugin(),
     new CopyWebpackPlugin({
         patterns: [

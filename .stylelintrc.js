@@ -14,7 +14,8 @@ module.exports = {
     "no-invalid-position-at-import-rule": null,
     "string-quotes": null,
     "max-line-length": 150,
-    "property-no-vendor-prefix": null
+    "property-no-vendor-prefix": null,
+    "declaration-block-trailing-semicolon": "always",
   },
   ignoreFiles: [
     'build/**'

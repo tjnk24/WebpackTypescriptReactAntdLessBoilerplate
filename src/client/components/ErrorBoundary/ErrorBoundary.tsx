@@ -5,6 +5,7 @@ import EnhancedButton from '__components/EnhancedButton';
 import {ROUTES} from '__routes';
 
 import AppLayout from '../AppLayout';
+
 import {Props, State} from './types';
 
 export default class ErrorBoundary extends React.PureComponent<Props, State> {

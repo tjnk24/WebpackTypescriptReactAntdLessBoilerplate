@@ -13,6 +13,7 @@ import {routeManager} from '__utils/routing/routeManager';
 
 import {UsersApiGetResponse} from '../../api/types';
 import {tableDataIsPendingSelector, tableDataSelector} from '../../selectors';
+
 import {COLUMNS} from './consts';
 
 import {b} from './Page.less';

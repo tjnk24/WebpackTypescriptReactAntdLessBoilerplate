@@ -5,6 +5,7 @@ import componentWithReducer from '__store/componentWithReducer';
 import {onLoadComponent} from '__utils/onLoadComponent';
 
 import {reducers} from '../../slices';
+
 import Page from './Page';
 import {onLoad} from './preload';
 

@@ -214,7 +214,8 @@ module.exports = {
                 groups: [
                     ['builtin', 'external'],
                     'internal',
-                    ['parent', 'sibling'],
+                    'parent',
+                    'sibling',
                     'index',
                 ],
                 pathGroups: [

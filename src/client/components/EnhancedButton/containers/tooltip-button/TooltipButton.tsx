@@ -2,6 +2,7 @@ import {Tooltip, TooltipProps} from 'antd';
 import React from 'react';
 
 import CommonButton from '../common-button';
+
 import {Props} from './types';
 
 const TooltipButton: Props = ({

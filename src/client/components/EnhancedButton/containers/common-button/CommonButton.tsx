@@ -2,6 +2,7 @@ import {Button} from 'antd';
 import React from 'react';
 
 import {useAsyncButtonClick} from '../../hooks/useAsyncButtonClick';
+
 import {Props} from './types';
 
 const CommonButton: Props = props => {

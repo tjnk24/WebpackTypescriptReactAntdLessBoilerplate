@@ -13,9 +13,10 @@ import {Provider} from 'react-redux';
 import {StaticRouter} from 'react-router';
 
 import ErrorBoundary from '__components/ErrorBoundary';
-import Core from '__pages/Core';
 import {rootReducer} from '__store/configureStore';
 import {history} from '__store/history';
+
+import Core from '../client/pages/Core';
 
 import template from './template';
 

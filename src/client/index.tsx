@@ -7,9 +7,10 @@ import './less/main.less';
 
 import ErrorBoundary from '__components/ErrorBoundary';
 import config from '__config';
-import Core from '__pages/Core';
 import {store} from '__store/configureStore';
 import {history} from '__store/history';
+
+import Core from './pages/Core';
 
 const render = () => {
     ReactDOM.render(

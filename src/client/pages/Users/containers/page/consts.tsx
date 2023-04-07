@@ -2,8 +2,9 @@ import {Typography} from 'antd';
 import {ColumnsType} from 'antd/lib/table';
 import React from 'react';
 
-import {UsersApiGetResponse} from '__pages/Users/api/types';
 import {makeTypedName} from '__utils/makeTypedName';
+
+import {UsersApiGetResponse} from '../../api/types';
 
 export const COLUMNS: ColumnsType<UsersApiGetResponse> = [
     {

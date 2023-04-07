@@ -1,9 +1,9 @@
 import React from 'react';
 import {Switch} from 'react-router';
 
-import NotFound from '__pages/NotFound';
-import TestPage from '__pages/TestPage';
-import Users from '__pages/Users';
+import NotFound from '../../../NotFound';
+import TestPage from '../../../TestPage';
+import Users from '../../../Users';
 
 const AppRoutes = () => {
     return (

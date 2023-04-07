@@ -250,6 +250,23 @@ module.exports = {
                 'newlines-between': 'always',
             },
         ],
+        'no-restricted-imports': [
+            'error',
+            {
+                'patterns': [
+                    {
+                        'group': ['__pages/*'],
+                        'message': 'usage of import from __pages directory allowed only for appRoutes.ts, render.ts, static/client/index.tsx',
+                    },
+                ],
+                'paths': [
+                    {
+                        'name': 'lodash',
+                        'message': 'Use "import utilName from \'lodash/utilName\'" instead',
+                    },
+                ],
+            },
+        ],
     },
     overrides: [
         {

@@ -1,10 +1,11 @@
 import {MinusOutlined, PlusOutlined} from '@ant-design/icons';
-import {Button, Typography} from 'antd';
+import {Typography} from 'antd';
 import React, {useState} from 'react';
 import {useSelector} from 'react-redux';
 
 import {commonActions} from '__commonActions';
 import AppLayout from '__components/AppLayout';
+import EnhancedButton from '__components/EnhancedButton';
 import {testGlobalCounterCountSelector} from '__selectors/testGlobalCounterSelectors';
 import {routeManager} from '__utils/routing/routeManager';
 
@@ -42,24 +43,36 @@ const Page = () => {
                     Global Count: {globalCount}
                 </Typography.Text>
 
-                <Button
-                    onClick={onIncrementClick}
-                    icon={<PlusOutlined/>}
+                <EnhancedButton
+                    buttonProps={{
+                        onClick: onIncrementClick,
+                        icon: <PlusOutlined/>,
+                    }}
                 />
 
-                <Button
-                    onClick={onDecrementClick}
-                    icon={<MinusOutlined/>}
+                <EnhancedButton
+                    buttonProps={{
+                        onClick: onDecrementClick,
+                        icon: <MinusOutlined/>,
+                    }}
                 />
             </div>
 
-            <Button onClick={onTrowErrorClick}>
+            <EnhancedButton
+                buttonProps={{
+                    onClick: onTrowErrorClick,
+                }}
+            >
                 Trigger Error
-            </Button>
+            </EnhancedButton>
 
-            <Button onClick={onGoToUsersClick}>
+            <EnhancedButton
+                buttonProps={{
+                    onClick: onGoToUsersClick,
+                }}
+            >
                 Go to Users
-            </Button>
+            </EnhancedButton>
         </AppLayout>
     );
 };

@@ -1,6 +1,7 @@
-import {Button, Typography} from 'antd';
+import {Typography} from 'antd';
 import React from 'react';
 
+import EnhancedButton from '__components/EnhancedButton';
 import {ROUTES} from '__routes';
 
 import AppLayout from '../AppLayout';
@@ -36,9 +37,13 @@ export default class ErrorBoundary extends React.PureComponent<Props, State> {
 
                     <br/>
 
-                    <Button onClick={this.onGoToUsersClick}>
+                    <EnhancedButton
+                        buttonProps={{
+                            onClick: this.onGoToUsersClick,
+                        }}
+                    >
                         Return to users page
-                    </Button>
+                    </EnhancedButton>
                 </AppLayout>
             );
         }

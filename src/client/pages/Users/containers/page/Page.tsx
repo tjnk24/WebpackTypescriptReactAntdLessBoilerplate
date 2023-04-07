@@ -1,5 +1,4 @@
 import {
-    Button,
     Input,
     Table,
     Typography,
@@ -8,6 +7,7 @@ import React, {useEffect, useState} from 'react';
 import {useSelector} from 'react-redux';
 
 import AppLayout from '__components/AppLayout';
+import EnhancedButton from '__components/EnhancedButton';
 import {testGlobalCounterCountSelector} from '__selectors/testGlobalCounterSelectors';
 import {routeManager} from '__utils/routing/routeManager';
 
@@ -64,12 +64,14 @@ const Users = () => {
                     allowClear
                 />
 
-                <Button
-                    className={b('goToTestPageButton')}
-                    onClick={onGoToTestPageClick}
+                <EnhancedButton
+                    buttonProps={{
+                        className: b('goToTestPageButton'),
+                        onClick: onGoToTestPageClick,
+                    }}
                 >
                     Go to Test page
-                </Button>
+                </EnhancedButton>
             </div>
 
             <Table<UsersApiGetResponse>

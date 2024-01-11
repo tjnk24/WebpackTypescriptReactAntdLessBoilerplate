@@ -1,7 +1,7 @@
 {
-  "name": "webpack-typescript-less-boilerplate",
+  "name": "react-antd-boilerplate",
   "version": "1.0.0",
-  "description": "webpack-typescript-less-boilerplate",
+  "description": "react-antd-boilerplate",
   "main": "src/index.js",
   "repository": "https://github.com/tjnk24/WebpackTypescriptBoilerplate.git",
   "author": "tjnk24 <tjnk24@gmail.com>",

@@ -1,7 +1,7 @@
 {
-  "name": "react-antd-boilerplate",
+  "name": "react-antd-ssr-boilerplate",
   "version": "1.0.0",
-  "description": "react-antd-boilerplate",
+  "description": "react-antd-ssr-boilerplate",
   "main": "src/index.js",
   "repository": "https://github.com/tjnk24/WebpackTypescriptBoilerplate.git",
   "author": "tjnk24 <tjnk24@gmail.com>",

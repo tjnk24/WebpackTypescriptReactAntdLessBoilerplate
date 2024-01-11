@@ -1,4 +1,4 @@
-# react-antd-boilerplate
+# react-antd-ssr-boilerplate
 Boilerplate with Webpack, TS, Less, React, Antd ready
 
 - Webpack

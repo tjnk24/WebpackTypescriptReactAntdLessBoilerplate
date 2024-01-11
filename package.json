@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "react-antd-ssr-boilerplate",
   "main": "src/index.js",
-  "repository": "https://github.com/tjnk24/WebpackTypescriptBoilerplate.git",
+  "repository": "https://github.com/tjnk24/react-antd-ssr-boilerplate.git",
   "author": "tjnk24 <tjnk24@gmail.com>",
   "license": "MIT",
   "private": false,
